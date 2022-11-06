@@ -5,8 +5,11 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     Rigidbody rb;
-    public float playerMovementSpeed;
-    public float jumpForce;
+    [SerializeField] float playerMovementSpeed;
+    [SerializeField] float jumpForce;
+
+    [SerializeField] Transform groudCheck;
+    [SerializeField] LayerMask ground;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,25 +24,14 @@ public class MovementController : MonoBehaviour
 
         rb.velocity = new Vector3(horizontalInput * playerMovementSpeed,rb.velocity.y, verticalInput * playerMovementSpeed); ;
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && IsTouchingTheFloor())
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
-/*        if (Input.GetKey("w"))
-        {
-            rb.velocity = new Vector3(0, 0, 5f);
-        }
-        if (Input.GetKey("s"))
-        {
-            rb.velocity = new Vector3(0, 0, -5f);
-        }
-        if (Input.GetKey("d"))
-        {
-            rb.velocity = new Vector3(5f, 0, 0);
-        }
-        if (Input.GetKey("a"))
-        {
-            rb.velocity = new Vector3(-5f, 0, 0);
-        }*/
+    }
+
+    bool IsTouchingTheFloor()
+    {
+        return Physics.CheckSphere(groudCheck.position, 0.1f, ground);
     }
 }
