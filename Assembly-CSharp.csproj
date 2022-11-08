@@ -57,10 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ResettingWorldCenterOfMass.cs" />
-    <Compile Include="Assets\Scripts\FixRigidbodySliding.cs" />
-    <Compile Include="Assets\Scripts\MovementController.cs" />
     <Compile Include="Assets\Scripts\WaypointMovement.cs" />
+    <Compile Include="Assets\Scripts\FixRigidbodySliding.cs" />
     <Compile Include="Assets\Scripts\StickyPlatform.cs" />
+    <Compile Include="Assets\Scripts\MovementController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
